@@ -2,6 +2,7 @@ import { Phone, Globe, FileText, Shield, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import { PageLayout } from '@/components/layout'
 import { Container, Button, Card } from '@/components/ui'
+import { DashboardMockup } from '@/components/ui/DashboardMockup'
 import { SEO } from '@/components/SEO'
 import { useI18n } from '@/lib/i18n'
 
@@ -38,22 +39,30 @@ export function HomePage() {
       />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28">
-        <Container size="md">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight leading-[1.1]">
-              {t('hero.title')}
-            </h1>
-            <p className="mt-6 text-lg text-gray-600 leading-relaxed">
-              {t('hero.subtitle')}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button variant="primary" size="lg" href="/contact">
-                {t('hero.cta.primary')}
-              </Button>
-              <Button variant="secondary" size="lg" href="/services">
-                {t('hero.cta.secondary')}
-              </Button>
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left: Text content */}
+            <div className="max-w-xl">
+              <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight leading-[1.1]">
+                {t('hero.title')}
+              </h1>
+              <p className="mt-6 text-lg text-gray-600 leading-relaxed">
+                {t('hero.subtitle')}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button variant="primary" size="lg" href="/contact">
+                  {t('hero.cta.primary')}
+                </Button>
+                <Button variant="secondary" size="lg" href="/services">
+                  {t('hero.cta.secondary')}
+                </Button>
+              </div>
+            </div>
+
+            {/* Right: Dashboard mockup */}
+            <div className="lg:ml-8 -mr-4 md:-mr-8 lg:-mr-16">
+              <DashboardMockup />
             </div>
           </div>
         </Container>
