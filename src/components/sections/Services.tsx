@@ -49,7 +49,7 @@ export function Services({
           <div className="max-w-3xl mx-auto space-y-4">
             {services.map((service) => {
               const IconComponent =
-                (LucideIcons as Record<string, LucideIcons.LucideIcon>)[service.icon] ||
+                (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[service.icon] ||
                 LucideIcons.Circle
               const isOpen = openItem === service.id
 
@@ -100,7 +100,7 @@ export function Services({
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
             {services.map((service) => {
               const IconComponent =
-                (LucideIcons as Record<string, LucideIcons.LucideIcon>)[service.icon] ||
+                (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[service.icon] ||
                 LucideIcons.Circle
 
               return (

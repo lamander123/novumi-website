@@ -18,7 +18,7 @@ export function TrustBar({ items }: TrustBarProps) {
         <div className="grid md:grid-cols-3 gap-8 md:gap-12">
           {items.map((item, index) => {
             const IconComponent =
-              (LucideIcons as Record<string, LucideIcons.LucideIcon>)[item.icon] ||
+              (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[item.icon] ||
               LucideIcons.Circle
 
             return (

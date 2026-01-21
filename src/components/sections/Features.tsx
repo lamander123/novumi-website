@@ -48,7 +48,7 @@ export function Features({
         <div className={cn('grid gap-6 lg:gap-8', columnClasses[columns])}>
           {features.map((feature, index) => {
             const IconComponent =
-              (LucideIcons as Record<string, LucideIcons.LucideIcon>)[feature.icon] ||
+              (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[feature.icon] ||
               LucideIcons.Circle
 
             if (variant === 'simple') {

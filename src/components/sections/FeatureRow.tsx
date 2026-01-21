@@ -20,7 +20,7 @@ export function FeatureRow({
   highlights,
 }: FeatureRowProps) {
   const IconComponent =
-    (LucideIcons as Record<string, LucideIcons.LucideIcon>)[icon] ||
+    (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[icon] ||
     LucideIcons.Circle
 
   const isLeft = imagePosition === 'left'
