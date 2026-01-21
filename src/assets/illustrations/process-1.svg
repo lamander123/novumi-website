@@ -1,0 +1,20 @@
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Request/Form illustration -->
+  <circle cx="100" cy="100" r="80" fill="#f0f5ff"/>
+
+  <!-- Clipboard -->
+  <rect x="60" y="50" width="80" height="100" rx="8" fill="white" stroke="#0A1F44" stroke-width="2"/>
+  <rect x="80" y="40" width="40" height="20" rx="4" fill="#0A1F44"/>
+  <circle cx="100" cy="50" r="5" fill="white"/>
+
+  <!-- Form lines -->
+  <rect x="75" y="70" width="50" height="6" rx="3" fill="#0891b2"/>
+  <rect x="75" y="85" width="40" height="4" rx="2" fill="#cbd5e1"/>
+  <rect x="75" y="95" width="45" height="4" rx="2" fill="#cbd5e1"/>
+
+  <rect x="75" y="115" width="50" height="6" rx="3" fill="#0891b2"/>
+  <rect x="75" y="130" width="35" height="4" rx="2" fill="#cbd5e1"/>
+
+  <!-- Cursor -->
+  <path d="M125 105l15 15-6 2-3 8-6-10 8-3-8-12z" fill="#0A1F44"/>
+</svg>

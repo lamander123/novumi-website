@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novumi</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .logo-text {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #2d3a4f;
+      font-family: system-ui, -apple-system, sans-serif;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .terminal-line {
+      display: flex;
+      align-items: center;
+    }
+
+    .prompt {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #2d3a4f;
+      margin-right: 0.5rem;
+    }
+
+    .service-text {
+      font-size: 1.25rem;
+      font-family: monospace;
+      color: #5a6a7f;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 12px;
+      height: 24px;
+      background-color: #2d3a4f;
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1.06s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <div class="logo-text">Novumi</div>
+    <div class="terminal-line">
+      <span class="prompt">&gt;_</span>
+      <span class="service-text" id="service"></span>
+      <span class="cursor"></span>
+    </div>
+  </div>
+
+  <script>
+    const services = [
+      'Pre-Employment Screening',
+      'Cyber Security Investigation'
+    ];
+
+    let serviceIndex = 0;
+    let charIndex = 0;
+    let isTyping = true;
+    let displayText = '';
+    const serviceElement = document.getElementById('service');
+
+    function type() {
+      const currentService = services[serviceIndex];
+
+      if (isTyping) {
+        if (charIndex < currentService.length) {
+          displayText += currentService[charIndex];
+          serviceElement.textContent = displayText;
+          charIndex++;
+          setTimeout(type, 80);
+        } else {
+          setTimeout(() => {
+            isTyping = false;
+            type();
+          }, 4000);
+        }
+      } else {
+        if (displayText.length > 0) {
+          displayText = displayText.slice(0, -1);
+          serviceElement.textContent = displayText;
+          setTimeout(type, 40);
+        } else {
+          serviceIndex = (serviceIndex + 1) % services.length;
+          charIndex = 0;
+          isTyping = true;
+          type();
+        }
+      }
+    }
+
+    type();
+  </script>
+</body>
+</html>
