@@ -4,11 +4,9 @@ import { PageLayout } from '@/components/layout'
 import { Container, Button, Card } from '@/components/ui'
 import { SEO } from '@/components/SEO'
 import { useI18n } from '@/lib/i18n'
-import contactImage from '@/assets/illustrations/contact.svg'
 
 export function ContactPage() {
   const { t, language } = useI18n()
-  const isNL = language === 'nl'
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
@@ -24,7 +22,6 @@ export function ContactPage() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    // Form submission logic would go here
     setSubmitted(true)
   }
 
@@ -55,23 +52,25 @@ export function ContactPage() {
     ? ['Achtergrondverificatie', 'Referentiechecks', 'Diplomaverificatie', 'Digitale analyse', 'Strafrechtelijk onderzoek']
     : ['Background verification', 'Reference checks', 'Education verification', 'Digital analysis', 'Criminal screening']
 
+  const inputClasses = 'w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-gray-900 outline-none transition-colors text-gray-900 placeholder:text-gray-400'
+  const labelClasses = 'block text-sm font-medium text-gray-900 mb-1.5'
+
   return (
     <PageLayout>
       <SEO
-        title={isNL ? 'Contact' : 'Contact'}
-        description={isNL
-          ? 'Neem contact op met Novumi voor pre-employment screening. Plan een demo of vraag een offerte aan.'
-          : 'Get in touch with Novumi for pre-employment screening. Book a demo or request a quote.'}
+        title={language === 'nl' ? 'Contact' : 'Contact'}
+        description={t('contact.hero.subtitle')}
         canonical="/contact"
       />
+
       {/* Hero */}
-      <section className="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-gradient-to-b from-neutral-50 to-white">
-        <Container>
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-heading font-bold text-primary-900 leading-tight">
+      <section className="pt-32 pb-12 md:pt-40 md:pb-16">
+        <Container size="md">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight leading-[1.1]">
               {t('contact.hero.title')}
             </h1>
-            <p className="mt-4 text-xl text-neutral-600">
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed">
               {t('contact.hero.subtitle')}
             </p>
           </div>
@@ -79,202 +78,209 @@ export function ContactPage() {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-12 lg:py-20">
+      <section className="py-12 md:py-20">
         <Container>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-20">
             {/* Form */}
-            <Card padding="lg">
-              {submitted ? (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="w-8 h-8 text-accent-600" />
+            <div className="lg:col-span-3">
+              <Card padding="lg">
+                {submitted ? (
+                  <div className="text-center py-12">
+                    <div className="w-12 h-12 bg-accent-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-6 h-6 text-accent-600" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      {t('contact.form.success')}
+                    </h3>
                   </div>
-                  <h3 className="text-2xl font-heading font-semibold text-primary-900">
-                    {t('contact.form.success')}
-                  </h3>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="name" className={labelClasses}>
+                          {t('contact.form.name')} *
+                        </label>
+                        <input
+                          type="text"
+                          id="name"
+                          required
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          className={inputClasses}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="email" className={labelClasses}>
+                          {t('contact.form.email')} *
+                        </label>
+                        <input
+                          type="email"
+                          id="email"
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className={inputClasses}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="phone" className={labelClasses}>
+                          {t('contact.form.phone')}
+                        </label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          className={inputClasses}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="jobTitle" className={labelClasses}>
+                          {t('contact.form.jobTitle')} *
+                        </label>
+                        <input
+                          type="text"
+                          id="jobTitle"
+                          required
+                          value={formData.jobTitle}
+                          onChange={(e) => setFormData({ ...formData, jobTitle: e.target.value })}
+                          placeholder={language === 'nl' ? 'Bijv. HR Manager' : 'e.g. HR Manager'}
+                          className={inputClasses}
+                        />
+                      </div>
+                    </div>
+
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-primary-900 mb-1.5">
-                        {t('contact.form.name')} *
+                      <label htmlFor="company" className={labelClasses}>
+                        {t('contact.form.company')} *
                       </label>
                       <input
                         type="text"
-                        id="name"
+                        id="company"
                         required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        className={inputClasses}
                       />
                     </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-primary-900 mb-1.5">
-                        {t('contact.form.email')} *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
-                      />
-                    </div>
-                  </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-primary-900 mb-1.5">
-                        {language === 'nl' ? 'Telefoonnummer' : 'Phone number'}
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="jobTitle" className="block text-sm font-medium text-primary-900 mb-1.5">
-                        {language === 'nl' ? 'Functie' : 'Job title'} *
-                      </label>
-                      <input
-                        type="text"
-                        id="jobTitle"
-                        required
-                        value={formData.jobTitle}
-                        onChange={(e) => setFormData({ ...formData, jobTitle: e.target.value })}
-                        placeholder={language === 'nl' ? 'Bijv. HR Manager' : 'e.g. HR Manager'}
-                        className="w-full px-4 py-2.5 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-primary-900 mb-1.5">
-                      {t('contact.form.company')} *
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      required
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-2.5 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors"
-                    />
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="companySize" className="block text-sm font-medium text-primary-900 mb-1.5">
-                        {language === 'nl' ? 'Bedrijfsgrootte' : 'Company size'} *
-                      </label>
-                      <select
-                        id="companySize"
-                        required
-                        value={formData.companySize}
-                        onChange={(e) => setFormData({ ...formData, companySize: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors bg-white"
-                      >
-                        <option value="">{language === 'nl' ? 'Selecteer...' : 'Select...'}</option>
-                        {companySizes.map(size => (
-                          <option key={size} value={size}>{size}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="screeningsPerYear" className="block text-sm font-medium text-primary-900 mb-1.5">
-                        {language === 'nl' ? 'Verwachte screenings' : 'Expected screenings'} *
-                      </label>
-                      <select
-                        id="screeningsPerYear"
-                        required
-                        value={formData.screeningsPerYear}
-                        onChange={(e) => setFormData({ ...formData, screeningsPerYear: e.target.value })}
-                        className="w-full px-4 py-2.5 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors bg-white"
-                      >
-                        <option value="">{language === 'nl' ? 'Selecteer...' : 'Select...'}</option>
-                        {screeningVolumes.map(vol => (
-                          <option key={vol} value={vol}>{vol}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-primary-900 mb-2">
-                      {language === 'nl' ? 'Interesse in' : 'Interested in'}
-                    </label>
-                    <div className="flex flex-wrap gap-2">
-                      {interestOptions.map(interest => (
-                        <button
-                          key={interest}
-                          type="button"
-                          onClick={() => handleInterestToggle(interest)}
-                          className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${
-                            formData.interests.includes(interest)
-                              ? 'bg-accent-100 border-accent-500 text-accent-700'
-                              : 'bg-white border-neutral-200 text-neutral-600 hover:border-neutral-300'
-                          }`}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="companySize" className={labelClasses}>
+                          {t('contact.form.companySize')} *
+                        </label>
+                        <select
+                          id="companySize"
+                          required
+                          value={formData.companySize}
+                          onChange={(e) => setFormData({ ...formData, companySize: e.target.value })}
+                          className={`${inputClasses} bg-white`}
                         >
-                          {interest}
-                        </button>
-                      ))}
+                          <option value="">{language === 'nl' ? 'Selecteer...' : 'Select...'}</option>
+                          {companySizes.map(size => (
+                            <option key={size} value={size}>{size}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <div>
+                        <label htmlFor="screeningsPerYear" className={labelClasses}>
+                          {t('contact.form.screenings')} *
+                        </label>
+                        <select
+                          id="screeningsPerYear"
+                          required
+                          value={formData.screeningsPerYear}
+                          onChange={(e) => setFormData({ ...formData, screeningsPerYear: e.target.value })}
+                          className={`${inputClasses} bg-white`}
+                        >
+                          <option value="">{language === 'nl' ? 'Selecteer...' : 'Select...'}</option>
+                          {screeningVolumes.map(vol => (
+                            <option key={vol} value={vol}>{vol}</option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
-                  </div>
 
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-primary-900 mb-1.5">
-                      {t('contact.form.message')}
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={3}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder={language === 'nl' ? 'Vertel ons meer over uw behoeften...' : 'Tell us more about your needs...'}
-                      className="w-full px-4 py-2.5 border border-neutral-200 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 outline-none transition-colors resize-none"
-                    />
-                  </div>
+                    <div>
+                      <label className={labelClasses}>
+                        {t('contact.form.interests')}
+                      </label>
+                      <div className="flex flex-wrap gap-2">
+                        {interestOptions.map(interest => (
+                          <button
+                            key={interest}
+                            type="button"
+                            onClick={() => handleInterestToggle(interest)}
+                            className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
+                              formData.interests.includes(interest)
+                                ? 'bg-gray-900 border-gray-900 text-white'
+                                : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
+                            }`}
+                          >
+                            {interest}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
 
-                  <Button type="submit" className="w-full" size="lg">
-                    {language === 'nl' ? 'Plan een demo' : 'Book a demo'}
-                  </Button>
-                </form>
-              )}
-            </Card>
+                    <div>
+                      <label htmlFor="message" className={labelClasses}>
+                        {t('contact.form.message')}
+                      </label>
+                      <textarea
+                        id="message"
+                        rows={3}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder={language === 'nl' ? 'Vertel ons meer over uw behoeften...' : 'Tell us more about your needs...'}
+                        className={`${inputClasses} resize-none`}
+                      />
+                    </div>
+
+                    <Button type="submit" className="w-full" size="lg">
+                      {t('contact.form.submit')}
+                    </Button>
+                  </form>
+                )}
+              </Card>
+            </div>
 
             {/* Info */}
-            <div>
-              <div className="mb-8">
-                <img src={contactImage} alt="" className="w-full max-w-sm" />
-              </div>
-
-              <h2 className="text-2xl font-heading font-semibold text-primary-900 mb-6">
+            <div className="lg:col-span-2">
+              <h2 className="text-lg font-semibold text-gray-900 mb-6">
                 {t('contact.info.title')}
               </h2>
 
               <div className="space-y-6">
                 {contactInfo.map(({ icon: Icon, label, value, href }, i) => (
                   <div key={i} className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-5 h-5 text-accent-600" />
-                    </div>
+                    <Icon className="w-5 h-5 text-gray-400 mt-0.5" strokeWidth={1.5} />
                     <div>
-                      <p className="text-sm text-neutral-500">{label}</p>
+                      <p className="text-sm text-gray-500">{label}</p>
                       {href ? (
-                        <a href={href} className="text-primary-900 font-medium hover:text-accent-600 transition-colors">
+                        <a href={href} className="text-gray-900 font-medium hover:text-accent-600 transition-colors">
                           {value}
                         </a>
                       ) : (
-                        <p className="text-primary-900 font-medium">{value}</p>
+                        <p className="text-gray-900 font-medium">{value}</p>
                       )}
                     </div>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-gray-200">
+                <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">
+                  {language === 'nl' ? 'Responstijd' : 'Response time'}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {language === 'nl'
+                    ? 'Wij reageren binnen 24 uur op alle aanvragen. Voor dringende zaken kunt u ons telefonisch bereiken.'
+                    : 'We respond to all inquiries within 24 hours. For urgent matters, you can reach us by phone.'}
+                </p>
               </div>
             </div>
           </div>

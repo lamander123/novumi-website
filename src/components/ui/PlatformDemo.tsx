@@ -74,7 +74,7 @@ export function PlatformDemo({ className }: PlatformDemoProps) {
           </div>
           <div className="flex-1 mx-4">
             <div className="bg-neutral-700 rounded-md px-3 py-1 text-xs text-neutral-400 text-center">
-              app.novumi.com
+              app.novumi.nl
             </div>
           </div>
         </div>

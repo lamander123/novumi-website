@@ -3,11 +3,9 @@ import { PageLayout } from '@/components/layout'
 import { Container, Button, Card } from '@/components/ui'
 import { SEO } from '@/components/SEO'
 import { useI18n } from '@/lib/i18n'
-import teamImage from '@/assets/illustrations/team.svg'
 
 export function AboutPage() {
   const { t, language } = useI18n()
-  const isNL = language === 'nl'
 
   const values = [
     { icon: Eye, titleKey: 'about.value1.title', descKey: 'about.value1.desc' },
@@ -18,20 +16,19 @@ export function AboutPage() {
   return (
     <PageLayout>
       <SEO
-        title={isNL ? 'Over Ons' : 'About Us'}
-        description={isNL
-          ? 'Novumi combineert traditioneel onderzoek met digitale security expertise. Ontdek onze missie, waarden en aanpak.'
-          : 'Novumi bridges traditional investigation with digital security expertise. Discover our mission, values, and approach.'}
+        title={language === 'nl' ? 'Over Ons' : 'About Us'}
+        description={t('about.hero.subtitle')}
         canonical="/about"
       />
+
       {/* Hero */}
-      <section className="pt-24 pb-16 lg:pt-32 lg:pb-20 bg-gradient-to-b from-neutral-50 to-white">
-        <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-heading font-bold text-primary-900 leading-tight">
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28">
+        <Container size="md">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight leading-[1.1]">
               {t('about.hero.title')}
             </h1>
-            <p className="mt-6 text-xl text-neutral-600 leading-relaxed">
+            <p className="mt-6 text-lg text-gray-600 leading-relaxed">
               {t('about.hero.subtitle')}
             </p>
           </div>
@@ -39,71 +36,122 @@ export function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="py-20 lg:py-28">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <section className="py-20 md:py-28 bg-gray-50">
+        <Container size="md">
+          <div className="max-w-3xl">
+            <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">
+              {t('about.story.title')}
+            </h2>
+            <div className="space-y-6">
+              <p className="text-gray-900 text-lg leading-relaxed">
+                {t('about.story.p1')}
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                {t('about.story.p2')}
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Approach */}
+      <section className="py-20 md:py-28">
+        <Container size="md">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary-900 mb-6">
-                {t('about.story.title')}
+              <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">
+                {language === 'nl' ? 'Traditioneel onderzoek' : 'Traditional investigation'}
               </h2>
-              <div className="space-y-4 text-lg text-neutral-600 leading-relaxed">
-                <p>{t('about.story.p1')}</p>
-                <p>{t('about.story.p2')}</p>
-              </div>
+              <p className="text-gray-600 leading-relaxed">
+                {language === 'nl'
+                  ? 'Wij bellen vorige werkgevers. Contacteren opleidingsinstellingen. Verifiëren licenties bij beroepsregisters. Dit kost tijd, maar levert informatie op die databases niet bevatten.'
+                  : 'We call previous employers. Contact educational institutions. Verify licenses at professional registers. This takes time, but delivers information that databases don\'t contain.'}
+              </p>
             </div>
             <div>
-              <img src={teamImage} alt="" className="w-full rounded-2xl" />
+              <h2 className="text-sm font-medium text-accent-600 uppercase tracking-wide mb-4">
+                {language === 'nl' ? 'Digitale intelligence' : 'Digital intelligence'}
+              </h2>
+              <p className="text-gray-900 font-medium leading-relaxed">
+                {language === 'nl'
+                  ? 'Wij analyseren wat online te vinden is over een kandidaat. Sociale media, openbare registers, nieuwsartikelen. Een complete digitale voetafdruk—binnen de grenzen van de AVG.'
+                  : 'We analyze what can be found online about a candidate. Social media, public records, news articles. A complete digital footprint—within GDPR boundaries.'}
+              </p>
             </div>
           </div>
         </Container>
       </section>
 
       {/* Values */}
-      <section className="py-20 lg:py-28 bg-neutral-50">
+      <section className="py-20 md:py-28 bg-gray-50">
         <Container>
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-primary-900 text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 text-center mb-16">
             {t('about.values.title')}
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {values.map(({ icon: Icon, titleKey, descKey }, i) => (
-              <Card key={i} padding="lg" className="text-center">
-                <div className="w-14 h-14 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-7 h-7 text-accent-600" />
+              <Card key={i} padding="lg">
+                <div className="flex gap-4">
+                  <Icon className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" strokeWidth={1.5} />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">
+                      {t(titleKey)}
+                    </h3>
+                    <p className="mt-2 text-gray-600 text-sm leading-relaxed">
+                      {t(descKey)}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-heading font-semibold text-primary-900">
-                  {t(titleKey)}
-                </h3>
-                <p className="mt-3 text-neutral-600">
-                  {t(descKey)}
-                </p>
               </Card>
             ))}
           </div>
         </Container>
       </section>
 
+      {/* Trust */}
+      <section className="py-20 md:py-28">
+        <Container size="md">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">
+              {language === 'nl' ? 'Vertrouwen & compliance' : 'Trust & compliance'}
+            </h2>
+            <p className="text-gray-600 leading-relaxed mb-8">
+              {language === 'nl'
+                ? 'Wij verwerken gevoelige informatie. Daarom nemen we privacy en beveiliging serieus. Al onze processen zijn AVG-compliant, data blijft binnen de EU, en we hanteren strikte toegangscontroles.'
+                : 'We process sensitive information. That\'s why we take privacy and security seriously. All our processes are GDPR-compliant, data stays within the EU, and we maintain strict access controls.'}
+            </p>
+            <div className="flex flex-wrap justify-center gap-8">
+              <div className="text-center">
+                <p className="text-lg font-semibold text-gray-900">AVG/GDPR</p>
+                <p className="text-sm text-gray-500">{language === 'nl' ? 'Compliant' : 'Compliant'}</p>
+              </div>
+              <div className="text-center">
+                <p className="text-lg font-semibold text-gray-900">EU</p>
+                <p className="text-sm text-gray-500">{language === 'nl' ? 'Dataopslag' : 'Data storage'}</p>
+              </div>
+              <div className="text-center">
+                <p className="text-lg font-semibold text-gray-900">ISO 27001</p>
+                <p className="text-sm text-gray-500">{language === 'nl' ? 'Beveiligingsstandaard' : 'Security standard'}</p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       {/* CTA */}
-      <section className="py-20 lg:py-28 bg-primary-900">
-        <Container>
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-white">
+      <section className="py-20 md:py-28 bg-gray-50">
+        <Container size="sm">
+          <div className="text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">
               {t('cta.title')}
             </h2>
-            <p className="mt-4 text-lg text-primary-200">
+            <p className="mt-4 text-gray-600 max-w-md mx-auto">
               {t('cta.desc')}
             </p>
-            <div className="mt-8 flex flex-wrap gap-4 justify-center">
-              <Button variant="accent" size="lg" href="/contact">
+            <div className="mt-8">
+              <Button variant="primary" size="lg" href="/contact">
                 {t('cta.button')}
-              </Button>
-              <Button
-                variant="ghost"
-                size="lg"
-                href="/contact"
-                className="text-white border border-white/30 hover:bg-white/10"
-              >
-                {t('hero.cta.demo')}
               </Button>
             </div>
           </div>

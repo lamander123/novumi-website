@@ -15,84 +15,81 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.services': 'Diensten',
     'nav.about': 'Over ons',
     'nav.contact': 'Contact',
-    'nav.portal': 'Klantenportaal',
+    'nav.portal': 'Portaal',
 
     // Hero
-    'hero.subtitle': 'In een wereld waar referenties vervalst kunnen worden en verledens verborgen blijven, heeft u iemand nodig die de waarheid kan vinden.',
-    'hero.cta.primary': 'Start screening',
+    'hero.title': 'Screening dat vindt wat anderen missen.',
+    'hero.subtitle': 'Wij combineren traditioneel onderzoek met digitale intelligence. Zo ontdekken we risico\'s die standaard checks missen.',
+    'hero.cta.primary': 'Plan een gesprek',
     'hero.cta.secondary': 'Bekijk diensten',
-    'hero.cta.demo': 'Plan een demo',
 
-    // Stats
-    'stats.screenings': 'Screenings',
-    'stats.clients': 'Klanten',
-    'stats.accuracy': 'Nauwkeurigheid',
-    'stats.countries': 'EU Landen',
+    // Problem section
+    'problem.title': 'Het probleem met standaard screening',
+    'problem.text': 'Een VOG vertelt je alleen of iemand veroordeeld is—niet of diegene de waarheid vertelt. Standaard screeningbureaus controleren databases, maar bellen zelden de vorige werkgever. En niemand kijkt naar wat online te vinden is.',
 
-    // Trust bar
-    'trust.verified.title': 'Geverifieerd',
-    'trust.verified.desc': 'Elke claim gecontroleerd bij officiële bronnen',
-    'trust.secure.title': 'Veilig',
-    'trust.secure.desc': 'AVG-compliant met enterprise-grade beveiliging',
-    'trust.fast.title': 'Snel',
-    'trust.fast.desc': 'Resultaten binnen 48-72 uur',
+    // Solution section
+    'solution.title': 'Onze aanpak',
+    'solution.text': 'Novumi combineert de grondigheid van een traditioneel onderzoeksbureau met moderne digitale intelligence. Wij verifiëren niet alleen—wij onderzoeken.',
 
     // Process section
     'process.title': 'Hoe het werkt',
-    'process.subtitle': 'Een eenvoudig en transparant proces van aanvraag tot rapport',
-    'process.step1.title': 'Aanvraag indienen',
-    'process.step1.desc': 'Vul het aanvraagformulier in met de gegevens van de kandidaat. Wij regelen de toestemmingsverklaring.',
+    'process.step1.title': 'Aanvraag',
+    'process.step1.desc': 'Dien een aanvraag in via ons portaal. Wij regelen de toestemmingsverklaring met de kandidaat.',
     'process.step2.title': 'Onderzoek',
-    'process.step2.desc': 'Ons team verifieert alle gegevens bij primaire bronnen en voert een grondige analyse uit.',
-    'process.step3.title': 'Rapport ontvangen',
-    'process.step3.desc': 'U ontvangt een helder rapport met alle bevindingen en een duidelijke risicobeoordeling.',
+    'process.step2.desc': 'Ons team verifieert gegevens bij primaire bronnen en voert digitaal onderzoek uit.',
+    'process.step3.title': 'Rapport',
+    'process.step3.desc': 'U ontvangt een helder rapport met bevindingen en risico-indicatoren. Binnen 48-72 uur.',
 
-    // Features
-    'feature1.title': 'Achtergrondverificatie die verder gaat',
-    'feature1.desc': 'Standaard checks missen wat ertoe doet. Wij verifiëren werkgeschiedenis, opleidingen en professionele licenties bij primaire bronnen—niet alleen databases.',
-    'feature1.point1': 'Directe verificatie bij instellingen',
-    'feature1.point2': 'Internationale credential checks',
-    'feature1.point3': 'Validatie van professionele licenties',
+    // Benefits
+    'benefits.title': 'Waarom Novumi',
+    'benefit1.title': 'Verificatie bij de bron',
+    'benefit1.desc': 'Wij bellen vorige werkgevers. Contacteren opleidingsinstellingen. Verifiëren licenties bij beroepsregisters.',
+    'benefit2.title': 'OSINT-expertise',
+    'benefit2.desc': 'Wij analyseren sociale media, openbare registers en digitale sporen om te vinden wat traditionele screening mist.',
+    'benefit3.title': 'Rapporten waar je op kunt handelen',
+    'benefit3.desc': 'Geen jargon of onduidelijke bevindingen. Onze rapporten geven een helder beeld met concrete risico-indicatoren.',
+    'benefit4.title': 'AVG-compliant proces',
+    'benefit4.desc': 'Volledige naleving van de AVG en Nederlandse privacywetgeving. Data blijft binnen de EU.',
 
-    'feature2.title': 'Digitale voetafdruk analyse',
-    'feature2.desc': 'Risico bestaat vandaag online. Wij onderzoeken social media aanwezigheid, openbare registers en digitaal gedrag om te onthullen wat traditionele screening mist.',
-    'feature2.point1': 'Social media onderzoek',
-    'feature2.point2': 'Datalek exposure check',
-    'feature2.point3': 'Online reputatie beoordeling',
-
-    'feature3.title': 'Heldere, bruikbare rapportages',
-    'feature3.desc': 'Geen jargon, geen giswerk. Onze rapporten geven u het complete beeld met duidelijke bevindingen en risicobeoordelingen waar u naar kunt handelen.',
-    'feature3.point1': 'Executive summary met kernbevindingen',
-    'feature3.point2': 'Risico-indicatoren uitgelicht',
-    'feature3.point3': 'Ondersteunende documentatie bijgevoegd',
-
-    // Testimonials
-    'testimonials.title': 'Wat onze klanten zeggen',
-    'testimonial1.quote': 'Novumi heeft ons geholpen een cruciale mismatch te ontdekken die andere screeningbedrijven hadden gemist. Hun grondigheid is onovertroffen.',
-    'testimonial1.author': 'HR Director',
-    'testimonial1.company': 'Tech Scale-up',
-    'testimonial2.quote': 'De snelheid en duidelijkheid van hun rapporten heeft ons aanwervingsproces aanzienlijk verbeterd.',
-    'testimonial2.author': 'Operations Manager',
-    'testimonial2.company': 'Financiële Dienstverlening',
+    // Trust signals
+    'trust.turnaround': '48-72 uur',
+    'trust.turnaround.label': 'Doorlooptijd',
+    'trust.compliant': 'AVG-compliant',
+    'trust.compliant.label': 'Privacywetgeving',
+    'trust.eu': 'EU-data',
+    'trust.eu.label': 'Dataopslag',
 
     // CTA
-    'cta.title': 'Klaar voor betrouwbare aannamebeslissingen?',
-    'cta.desc': 'Start met Novumi en ontdek de waarheid achter elke kandidaat.',
-    'cta.button': 'Neem contact op',
+    'cta.title': 'Klaar om zeker te weten wie u aanneemt?',
+    'cta.desc': 'Plan een vrijblijvend gesprek. Wij lichten onze aanpak toe en bespreken welke screening past bij uw organisatie.',
+    'cta.button': 'Plan een gesprek',
 
     // Services page
     'services.hero.title': 'Onze Diensten',
-    'services.hero.subtitle': 'Van standaard achtergrondchecks tot uitgebreide digitale onderzoeken—wij stemmen onze aanpak af op uw risicoprofiel.',
+    'services.hero.subtitle': 'Van referentieverificatie tot digitale analyse—screening afgestemd op uw risicoprofiel en sector.',
     'services.background.title': 'Achtergrondverificatie',
-    'services.background.desc': 'Uitgebreide verificatie van werkgeschiedenis, opleidingen en professionele referenties.',
+    'services.background.desc': 'Verificatie van werkervaring, opleidingen en professionele referenties bij de bron.',
     'services.criminal.title': 'Strafrechtelijke Screening',
-    'services.criminal.desc': 'Grondige controle van justitiële gegevens in meerdere jurisdicties.',
+    'services.criminal.desc': 'Controle van justitiële documentatie en sanctielijsten in binnen- en buitenland.',
     'services.digital.title': 'Digitale Analyse',
-    'services.digital.desc': 'Moderne screening die online aanwezigheid en digitaal gedrag onderzoekt.',
+    'services.digital.desc': 'OSINT-onderzoek naar online aanwezigheid, reputatie en digitale risico\'s.',
     'services.financial.title': 'Financiële Achtergrond',
-    'services.financial.desc': 'Financiële integriteitscontrole voor functies met financiële verantwoordelijkheid.',
+    'services.financial.desc': 'Integriteitscontrole voor functies met financiële verantwoordelijkheid.',
     'services.cta.title': 'Aangepaste oplossing nodig?',
     'services.cta.desc': 'Elke organisatie heeft een uniek risicoprofiel. Laten we bespreken hoe wij onze diensten kunnen afstemmen op uw specifieke behoeften.',
+
+    // FAQ
+    'faq.title': 'Veelgestelde vragen',
+    'faq.q1': 'Hoe lang duurt een screening?',
+    'faq.a1': 'Standaard achtergrondonderzoeken zijn binnen 48-72 uur afgerond. Uitgebreide screenings, inclusief internationale verificaties, duren 5-7 werkdagen.',
+    'faq.q2': 'Is toestemming van de kandidaat vereist?',
+    'faq.a2': 'Ja. Wij werken volledig volgens de AVG. Voordat wij beginnen, regelen wij een transparant toestemmingsproces met de kandidaat.',
+    'faq.q3': 'Wat is het verschil met een VOG?',
+    'faq.a3': 'Een VOG toont alleen aan of iemand relevante strafrechtelijke antecedenten heeft. Onze screening verifieert ook werkervaring, opleidingen, referenties en digitale aanwezigheid.',
+    'faq.q4': 'Bieden jullie internationale screening aan?',
+    'faq.a4': 'Ja. Wij verifiëren gegevens in de meeste Europese landen en daarbuiten. Doorlooptijden en beschikbare checks variëren per land.',
+    'faq.q5': 'Hoe waarborgen jullie databeveiliging?',
+    'faq.a5': 'Wij hanteren enterprise-grade beveiligingsmaatregelen: versleutelde dataoverdracht, beveiligde opslag en regelmatige audits. Alle data blijft binnen de EU.',
 
     // About page
     'about.hero.title': 'Over Novumi',
@@ -107,25 +104,27 @@ const translations: Record<Language, Record<string, string>> = {
     'about.value2.desc': 'Wij behandelen gevoelige informatie met de grootste zorg.',
     'about.value3.title': 'Helderheid',
     'about.value3.desc': 'Complexe bevindingen betekenen niets als ze niet begrepen kunnen worden.',
-    'about.team.title': 'Ons Team',
-    'about.team.subtitle': 'Een mix van onderzoeksexpertise, technische kennis en compliance-begrip.',
 
     // Contact page
     'contact.hero.title': 'Neem Contact Op',
     'contact.hero.subtitle': 'Vragen over onze diensten? Wij helpen u graag.',
     'contact.form.name': 'Naam',
     'contact.form.email': 'E-mail',
+    'contact.form.phone': 'Telefoonnummer',
+    'contact.form.jobTitle': 'Functie',
     'contact.form.company': 'Bedrijf',
+    'contact.form.companySize': 'Bedrijfsgrootte',
+    'contact.form.screenings': 'Verwachte screenings',
+    'contact.form.interests': 'Interesse in',
     'contact.form.message': 'Bericht',
     'contact.form.submit': 'Verstuur bericht',
     'contact.form.success': 'Bericht verzonden! Wij nemen binnen 24 uur contact met u op.',
-    'contact.info.title': 'Contact Informatie',
+    'contact.info.title': 'Contact',
     'contact.info.email': 'info@novumi.nl',
     'contact.info.phone': '+31 (0)20 123 4567',
     'contact.info.location': 'Amsterdam, Nederland',
 
     // Footer
-    'footer.tagline': 'Wij overbruggen traditioneel onderzoek met moderne digitale beveiliging.',
     'footer.privacy': 'Privacybeleid',
     'footer.terms': 'Algemene voorwaarden',
     'footer.rights': 'Alle rechten voorbehouden.',
@@ -136,84 +135,81 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.services': 'Services',
     'nav.about': 'About',
     'nav.contact': 'Contact',
-    'nav.portal': 'Client Portal',
+    'nav.portal': 'Portal',
 
     // Hero
-    'hero.subtitle': 'In a world where credentials can be fabricated and histories hidden, you need someone who can find the truth.',
-    'hero.cta.primary': 'Start screening',
+    'hero.title': 'Screening that finds what others miss.',
+    'hero.subtitle': 'We combine traditional investigation with digital intelligence. Uncovering risks that standard checks miss.',
+    'hero.cta.primary': 'Schedule a call',
     'hero.cta.secondary': 'View services',
-    'hero.cta.demo': 'Book a demo',
 
-    // Stats
-    'stats.screenings': 'Screenings',
-    'stats.clients': 'Clients',
-    'stats.accuracy': 'Accuracy',
-    'stats.countries': 'EU Countries',
+    // Problem section
+    'problem.title': 'The problem with standard screening',
+    'problem.text': 'A criminal record check only tells you if someone was convicted—not if they\'re telling the truth. Standard screening agencies check databases but rarely call the previous employer. And no one looks at what\'s findable online.',
 
-    // Trust bar
-    'trust.verified.title': 'Verified',
-    'trust.verified.desc': 'Every claim checked against authoritative sources',
-    'trust.secure.title': 'Secure',
-    'trust.secure.desc': 'GDPR compliant with enterprise-grade security',
-    'trust.fast.title': 'Fast',
-    'trust.fast.desc': 'Results delivered within 48-72 hours',
+    // Solution section
+    'solution.title': 'Our approach',
+    'solution.text': 'Novumi combines the thoroughness of a traditional investigation firm with modern digital intelligence. We don\'t just verify—we investigate.',
 
     // Process section
     'process.title': 'How it works',
-    'process.subtitle': 'A simple and transparent process from request to report',
-    'process.step1.title': 'Submit request',
-    'process.step1.desc': 'Fill out the request form with the candidate details. We handle the consent process.',
+    'process.step1.title': 'Request',
+    'process.step1.desc': 'Submit a request via our portal. We handle the consent process with the candidate.',
     'process.step2.title': 'Investigation',
-    'process.step2.desc': 'Our team verifies all information against primary sources and conducts thorough analysis.',
-    'process.step3.title': 'Receive report',
-    'process.step3.desc': 'You receive a clear report with all findings and a straightforward risk assessment.',
+    'process.step2.desc': 'Our team verifies information at primary sources and conducts digital investigation.',
+    'process.step3.title': 'Report',
+    'process.step3.desc': 'You receive a clear report with findings and risk indicators. Within 48-72 hours.',
 
-    // Features
-    'feature1.title': 'Background verification that goes deeper',
-    'feature1.desc': 'Standard checks miss what matters. We verify employment history, education credentials, and professional licenses against primary sources—not just databases.',
-    'feature1.point1': 'Direct verification with institutions',
-    'feature1.point2': 'International credential checks',
-    'feature1.point3': 'Professional license validation',
+    // Benefits
+    'benefits.title': 'Why Novumi',
+    'benefit1.title': 'Verification at the source',
+    'benefit1.desc': 'We call previous employers. Contact educational institutions. Verify licenses at professional registers.',
+    'benefit2.title': 'OSINT expertise',
+    'benefit2.desc': 'We analyze social media, public records, and digital traces to find what traditional screening misses.',
+    'benefit3.title': 'Reports you can act on',
+    'benefit3.desc': 'No jargon or unclear findings. Our reports provide a clear picture with concrete risk indicators.',
+    'benefit4.title': 'GDPR-compliant process',
+    'benefit4.desc': 'Full compliance with GDPR and Dutch privacy law. Data stays within the EU.',
 
-    'feature2.title': 'Digital footprint analysis',
-    'feature2.desc': 'Risk today exists online. We examine social media presence, public records, and digital behavior patterns to reveal what traditional screening misses.',
-    'feature2.point1': 'Social media review',
-    'feature2.point2': 'Data breach exposure check',
-    'feature2.point3': 'Online reputation assessment',
-
-    'feature3.title': 'Clear, actionable reports',
-    'feature3.desc': 'No jargon, no guesswork. Our reports give you the complete picture with clear findings and risk assessments you can act on.',
-    'feature3.point1': 'Executive summary with key findings',
-    'feature3.point2': 'Risk indicators highlighted',
-    'feature3.point3': 'Supporting documentation included',
-
-    // Testimonials
-    'testimonials.title': 'What our clients say',
-    'testimonial1.quote': 'Novumi helped us discover a critical mismatch that other screening companies had missed. Their thoroughness is unmatched.',
-    'testimonial1.author': 'HR Director',
-    'testimonial1.company': 'Tech Scale-up',
-    'testimonial2.quote': 'The speed and clarity of their reports has significantly improved our hiring process.',
-    'testimonial2.author': 'Operations Manager',
-    'testimonial2.company': 'Financial Services',
+    // Trust signals
+    'trust.turnaround': '48-72 hours',
+    'trust.turnaround.label': 'Turnaround',
+    'trust.compliant': 'GDPR-compliant',
+    'trust.compliant.label': 'Privacy law',
+    'trust.eu': 'EU data',
+    'trust.eu.label': 'Data storage',
 
     // CTA
-    'cta.title': 'Ready to make confident hiring decisions?',
-    'cta.desc': 'Get started with Novumi and discover the truth behind every candidate.',
-    'cta.button': 'Contact us',
+    'cta.title': 'Ready to know who you\'re hiring?',
+    'cta.desc': 'Schedule a no-obligation call. We\'ll explain our approach and discuss which screening fits your organization.',
+    'cta.button': 'Schedule a call',
 
     // Services page
     'services.hero.title': 'Our Services',
-    'services.hero.subtitle': 'From standard background checks to comprehensive digital investigations—we tailor our approach to your risk profile.',
+    'services.hero.subtitle': 'From reference verification to digital analysis—screening tailored to your risk profile and sector.',
     'services.background.title': 'Background Verification',
-    'services.background.desc': 'Comprehensive verification of employment history, education, and professional credentials.',
+    'services.background.desc': 'Verification of work experience, education, and professional references at the source.',
     'services.criminal.title': 'Criminal Screening',
-    'services.criminal.desc': 'Thorough criminal background checks across multiple jurisdictions.',
+    'services.criminal.desc': 'Verification of criminal records and sanctions lists domestically and internationally.',
     'services.digital.title': 'Digital Analysis',
-    'services.digital.desc': 'Modern screening that examines online presence and digital behavior.',
+    'services.digital.desc': 'OSINT investigation into online presence, reputation, and digital risks.',
     'services.financial.title': 'Financial Background',
-    'services.financial.desc': 'Financial integrity verification for positions with fiscal responsibility.',
+    'services.financial.desc': 'Integrity check for positions with financial responsibility.',
     'services.cta.title': 'Need a custom solution?',
     'services.cta.desc': 'Every organization has a unique risk profile. Let\'s discuss how we can tailor our services to your specific needs.',
+
+    // FAQ
+    'faq.title': 'Frequently asked questions',
+    'faq.q1': 'How long does a screening take?',
+    'faq.a1': 'Standard background investigations are completed within 48-72 hours. Comprehensive screenings, including international verifications, take 5-7 business days.',
+    'faq.q2': 'Is candidate consent required?',
+    'faq.a2': 'Yes. We work fully in accordance with GDPR. Before we begin, we arrange a transparent consent process with the candidate.',
+    'faq.q3': 'What\'s the difference with a VOG?',
+    'faq.a3': 'A VOG only shows if someone has relevant criminal history. Our screening also verifies work experience, education, references, and digital presence.',
+    'faq.q4': 'Do you offer international screening?',
+    'faq.a4': 'Yes. We verify information in most European countries and beyond. Turnaround times and available checks vary by country.',
+    'faq.q5': 'How do you ensure data security?',
+    'faq.a5': 'We employ enterprise-grade security measures: encrypted data transfer, secure storage, and regular audits. All data remains within the EU.',
 
     // About page
     'about.hero.title': 'About Novumi',
@@ -228,25 +224,27 @@ const translations: Record<Language, Record<string, string>> = {
     'about.value2.desc': 'We handle sensitive information with the utmost care.',
     'about.value3.title': 'Clarity',
     'about.value3.desc': 'Complex findings mean nothing if they can\'t be understood.',
-    'about.team.title': 'Our Team',
-    'about.team.subtitle': 'A blend of investigative expertise, technical knowledge, and compliance understanding.',
 
     // Contact page
     'contact.hero.title': 'Get in Touch',
     'contact.hero.subtitle': 'Questions about our services? We\'re here to help.',
     'contact.form.name': 'Name',
     'contact.form.email': 'Email',
+    'contact.form.phone': 'Phone number',
+    'contact.form.jobTitle': 'Job title',
     'contact.form.company': 'Company',
+    'contact.form.companySize': 'Company size',
+    'contact.form.screenings': 'Expected screenings',
+    'contact.form.interests': 'Interested in',
     'contact.form.message': 'Message',
     'contact.form.submit': 'Send message',
     'contact.form.success': 'Message sent! We\'ll get back to you within 24 hours.',
-    'contact.info.title': 'Contact Information',
+    'contact.info.title': 'Contact',
     'contact.info.email': 'info@novumi.nl',
     'contact.info.phone': '+31 (0)20 123 4567',
     'contact.info.location': 'Amsterdam, Netherlands',
 
     // Footer
-    'footer.tagline': 'Bridging traditional investigation with modern digital security.',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
     'footer.rights': 'All rights reserved.',
@@ -283,11 +281,11 @@ export function LanguageToggle() {
   return (
     <button
       onClick={() => setLanguage(language === 'nl' ? 'en' : 'nl')}
-      className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-neutral-600 hover:text-primary-900 rounded-full hover:bg-neutral-100 transition-colors"
+      className="flex items-center gap-1.5 px-2.5 py-1.5 text-sm font-medium text-gray-500 hover:text-gray-900 rounded-md hover:bg-gray-100 transition-colors"
     >
-      <span className={language === 'nl' ? 'font-semibold text-primary-900' : ''}>NL</span>
-      <span className="text-neutral-300">|</span>
-      <span className={language === 'en' ? 'font-semibold text-primary-900' : ''}>EN</span>
+      <span className={language === 'nl' ? 'text-gray-900' : ''}>NL</span>
+      <span className="text-gray-300">/</span>
+      <span className={language === 'en' ? 'text-gray-900' : ''}>EN</span>
     </button>
   )
 }

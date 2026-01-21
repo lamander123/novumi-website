@@ -14,42 +14,50 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-neutral-50 border-t border-neutral-200">
+    <footer className="border-t border-gray-200">
       <Container>
-        <div className="py-12 lg:py-16">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+        <div className="py-12">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             {/* Brand */}
-            <div className="max-w-sm">
-              <Logo size="md" />
-              <p className="mt-4 text-sm text-neutral-500">
-                {t('footer.tagline')}
-              </p>
+            <div className="flex items-center gap-8">
+              <Logo size="sm" />
+              <nav className="hidden md:flex gap-6">
+                {links.map((link) => (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
             </div>
 
-            {/* Links */}
-            <div className="flex flex-wrap gap-x-8 gap-y-2">
+            {/* Mobile links */}
+            <nav className="flex flex-wrap gap-4 md:hidden">
               {links.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="text-sm text-neutral-500 hover:text-primary-900 transition-colors"
+                  className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
-            </div>
+            </nav>
           </div>
 
           {/* Bottom */}
-          <div className="mt-12 pt-8 border-t border-neutral-200 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-neutral-400">
+          <div className="mt-8 pt-8 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <p className="text-sm text-gray-400">
               &copy; {currentYear} Novumi. {t('footer.rights')}
             </p>
             <div className="flex gap-6">
-              <Link to="/privacy" className="text-sm text-neutral-400 hover:text-neutral-600">
+              <Link to="/privacy" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
                 {t('footer.privacy')}
               </Link>
-              <Link to="/terms" className="text-sm text-neutral-400 hover:text-neutral-600">
+              <Link to="/terms" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
                 {t('footer.terms')}
               </Link>
             </div>

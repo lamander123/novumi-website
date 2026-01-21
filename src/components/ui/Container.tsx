@@ -2,14 +2,13 @@ import { HTMLAttributes } from 'react'
 import { cn } from '@/lib/cn'
 
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
-  size?: 'sm' | 'md' | 'lg' | 'full'
+  size?: 'sm' | 'md' | 'lg'
 }
 
 const sizes = {
   sm: 'max-w-3xl',
   md: 'max-w-5xl',
-  lg: 'max-w-7xl',
-  full: 'max-w-full',
+  lg: 'max-w-container',
 }
 
 export function Container({
@@ -20,7 +19,7 @@ export function Container({
 }: ContainerProps) {
   return (
     <div
-      className={cn('mx-auto px-4 sm:px-6 lg:px-8', sizes[size], className)}
+      className={cn('mx-auto px-6 md:px-8 lg:px-12', sizes[size], className)}
       {...props}
     >
       {children}

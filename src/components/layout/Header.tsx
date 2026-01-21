@@ -10,7 +10,6 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const { t } = useI18n()
-  const isHomePage = location.pathname === '/'
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -27,31 +26,29 @@ export function Header() {
 
   return (
     <header className={cn(
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-200',
-      scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+      'fixed top-0 left-0 right-0 z-50 transition-all duration-150',
+      scrolled
+        ? 'bg-white/80 backdrop-blur-md border-b border-gray-200'
+        : 'bg-white/60 backdrop-blur-sm'
     )}>
       <Container>
         <nav className="flex items-center justify-between h-16">
-          {/* Logo - only show on non-home pages */}
-          {!isHomePage ? (
-            <Link to="/" className="flex-shrink-0">
-              <Logo size="sm" />
-            </Link>
-          ) : (
-            <div className="w-20" />
-          )}
+          {/* Logo */}
+          <Link to="/" className="flex-shrink-0">
+            <Logo size="sm" />
+          </Link>
 
-          {/* Navigation links - centered */}
+          {/* Navigation links - desktop */}
           <div className="hidden lg:flex lg:items-center lg:gap-1">
             {links.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  'px-4 py-2 text-sm transition-colors rounded-full',
+                  'px-3 py-2 text-[15px] font-medium transition-colors rounded-md',
                   location.pathname === link.href
-                    ? 'text-primary-900 font-medium bg-neutral-100/80'
-                    : 'text-neutral-600 hover:text-primary-900 hover:bg-neutral-100/50'
+                    ? 'text-gray-900'
+                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
                 )}
               >
                 {link.label}
@@ -59,29 +56,24 @@ export function Header() {
             ))}
           </div>
 
-          {/* Right side */}
+          {/* Right side - desktop */}
           <div className="hidden lg:flex lg:items-center lg:gap-3">
             <LanguageToggle />
-            <Button variant="primary" size="sm" href="https://app.novumi.com">
+            <Button variant="primary" size="sm" href="https://app.novumi.nl">
               {t('nav.portal')}
             </Button>
           </div>
 
-          {/* Mobile */}
-          <div className="flex items-center gap-2 lg:hidden">
-            {!isHomePage && (
-              <Link to="/" className="mr-2">
-                <Logo size="sm" />
-              </Link>
-            )}
-            <div className="flex-1" />
+          {/* Mobile menu button */}
+          <div className="flex items-center gap-3 lg:hidden">
             <LanguageToggle />
             <button
               type="button"
-              className="p-2 text-neutral-600"
+              className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </nav>
@@ -89,7 +81,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-neutral-100 shadow-lg">
+        <div className="lg:hidden bg-white border-t border-gray-200">
           <Container>
             <div className="py-4 flex flex-col gap-1">
               {links.map((link) => (
@@ -97,18 +89,18 @@ export function Header() {
                   key={link.href}
                   to={link.href}
                   className={cn(
-                    'px-4 py-3 text-base rounded-lg',
+                    'px-3 py-2.5 text-[15px] font-medium rounded-md transition-colors',
                     location.pathname === link.href
-                      ? 'text-primary-900 font-medium bg-neutral-50'
-                      : 'text-neutral-600'
+                      ? 'text-gray-900 bg-gray-50'
+                      : 'text-gray-600 hover:bg-gray-50'
                   )}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="mt-4 pt-4 border-t border-neutral-100">
-                <Button variant="primary" href="https://app.novumi.com" className="w-full">
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <Button variant="primary" href="https://app.novumi.nl" className="w-full">
                   {t('nav.portal')}
                 </Button>
               </div>

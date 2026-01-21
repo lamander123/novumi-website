@@ -13,13 +13,13 @@ export const navigation = {
 
   portalLink: {
     label: 'Client Portal',
-    href: 'https://app.novumi.com', // Update with your actual portal URL
+    href: 'https://app.novumi.nl',
   },
 
   footer: {
     tagline:
       'Bridging traditional investigation with modern digital security. We uncover the relevant information that matters for your decisions.',
-    email: 'info@novumi.com',
+    email: 'info@novumi.nl',
     phone: '+31 (0) 20 123 4567',
     location: 'Amsterdam, Netherlands',
   },
