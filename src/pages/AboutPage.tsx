@@ -1,11 +1,13 @@
 import { Eye, Lock, Zap } from 'lucide-react'
 import { PageLayout } from '@/components/layout'
 import { Container, Button, Card } from '@/components/ui'
+import { SEO } from '@/components/SEO'
 import { useI18n } from '@/lib/i18n'
 import teamImage from '@/assets/illustrations/team.svg'
 
 export function AboutPage() {
-  const { t } = useI18n()
+  const { t, language } = useI18n()
+  const isNL = language === 'nl'
 
   const values = [
     { icon: Eye, titleKey: 'about.value1.title', descKey: 'about.value1.desc' },
@@ -15,6 +17,13 @@ export function AboutPage() {
 
   return (
     <PageLayout>
+      <SEO
+        title={isNL ? 'Over Ons' : 'About Us'}
+        description={isNL
+          ? 'Novumi combineert traditioneel onderzoek met digitale security expertise. Ontdek onze missie, waarden en aanpak.'
+          : 'Novumi bridges traditional investigation with digital security expertise. Discover our mission, values, and approach.'}
+        canonical="/about"
+      />
       {/* Hero */}
       <section className="pt-24 pb-16 lg:pt-32 lg:pb-20 bg-gradient-to-b from-neutral-50 to-white">
         <Container>

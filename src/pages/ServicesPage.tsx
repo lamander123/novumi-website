@@ -1,6 +1,7 @@
 import { UserSearch, Scale, Monitor, Landmark, Fingerprint, Users, Activity } from 'lucide-react'
 import { PageLayout } from '@/components/layout'
 import { Container, Button, Card } from '@/components/ui'
+import { SEO } from '@/components/SEO'
 import { useI18n } from '@/lib/i18n'
 
 export function ServicesPage() {
@@ -40,6 +41,13 @@ export function ServicesPage() {
 
   return (
     <PageLayout>
+      <SEO
+        title={isNL ? 'Diensten' : 'Services'}
+        description={isNL
+          ? 'Uitgebreide pre-employment screening diensten: achtergrondverificatie, strafrechtelijk onderzoek, digitale analyse en financieel onderzoek.'
+          : 'Comprehensive pre-employment screening services: background verification, criminal screening, digital analysis, and financial background checks.'}
+        canonical="/services"
+      />
       {/* Hero */}
       <section className="pt-24 pb-16 lg:pt-32 lg:pb-20 bg-gradient-to-b from-neutral-50 to-white">
         <Container>

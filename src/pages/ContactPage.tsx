@@ -2,11 +2,13 @@ import { useState, FormEvent } from 'react'
 import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react'
 import { PageLayout } from '@/components/layout'
 import { Container, Button, Card } from '@/components/ui'
+import { SEO } from '@/components/SEO'
 import { useI18n } from '@/lib/i18n'
 import contactImage from '@/assets/illustrations/contact.svg'
 
 export function ContactPage() {
   const { t, language } = useI18n()
+  const isNL = language === 'nl'
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
@@ -55,6 +57,13 @@ export function ContactPage() {
 
   return (
     <PageLayout>
+      <SEO
+        title={isNL ? 'Contact' : 'Contact'}
+        description={isNL
+          ? 'Neem contact op met Novumi voor pre-employment screening. Plan een demo of vraag een offerte aan.'
+          : 'Get in touch with Novumi for pre-employment screening. Book a demo or request a quote.'}
+        canonical="/contact"
+      />
       {/* Hero */}
       <section className="pt-24 pb-12 lg:pt-32 lg:pb-16 bg-gradient-to-b from-neutral-50 to-white">
         <Container>

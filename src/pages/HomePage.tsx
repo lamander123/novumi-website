@@ -1,10 +1,11 @@
 import { Shield, Lock, Zap, ClipboardList, Search, FileCheck, UserCheck, Globe, BarChart3 } from 'lucide-react'
 import { PageLayout } from '@/components/layout'
 import { Container, Button, AnimatedLogo, PlatformDemo, Card } from '@/components/ui'
+import { SEO } from '@/components/SEO'
 import { useI18n } from '@/lib/i18n'
 
 export function HomePage() {
-  const { t } = useI18n()
+  const { t, language } = useI18n()
 
   const trustIndicators = [
     { icon: Shield, titleKey: 'trust.verified.title' },
@@ -26,6 +27,13 @@ export function HomePage() {
 
   return (
     <PageLayout>
+      <SEO
+        title={language === 'nl' ? 'Pre-employment Screening' : 'Pre-employment Screening'}
+        description={language === 'nl'
+          ? 'Pre-employment screening die traditioneel onderzoek combineert met digitale security expertise. Achtergrondchecks, digitale analyse en uitgebreide rapporten.'
+          : 'Pre-employment screening that bridges traditional investigation with digital security expertise. Background checks, digital analysis, and comprehensive reports.'}
+        canonical="/"
+      />
       {/* Hero Section */}
       <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-to-b from-neutral-50 to-white">
         <Container>

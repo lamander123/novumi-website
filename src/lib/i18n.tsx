@@ -120,7 +120,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.submit': 'Verstuur bericht',
     'contact.form.success': 'Bericht verzonden! Wij nemen binnen 24 uur contact met u op.',
     'contact.info.title': 'Contact Informatie',
-    'contact.info.email': 'info@novumi.com',
+    'contact.info.email': 'info@novumi.nl',
     'contact.info.phone': '+31 (0)20 123 4567',
     'contact.info.location': 'Amsterdam, Nederland',
 
@@ -241,7 +241,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.form.submit': 'Send message',
     'contact.form.success': 'Message sent! We\'ll get back to you within 24 hours.',
     'contact.info.title': 'Contact Information',
-    'contact.info.email': 'info@novumi.com',
+    'contact.info.email': 'info@novumi.nl',
     'contact.info.phone': '+31 (0)20 123 4567',
     'contact.info.location': 'Amsterdam, Netherlands',
 
