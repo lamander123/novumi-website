@@ -7,6 +7,7 @@ const HomePage = lazy(() => import('@/pages/HomePage').then(m => ({ default: m.H
 const ServicesPage = lazy(() => import('@/pages/ServicesPage').then(m => ({ default: m.ServicesPage })))
 const AboutPage = lazy(() => import('@/pages/AboutPage').then(m => ({ default: m.AboutPage })))
 const ContactPage = lazy(() => import('@/pages/ContactPage').then(m => ({ default: m.ContactPage })))
+const PrivacyPage = lazy(() => import('@/pages/PrivacyPage').then(m => ({ default: m.PrivacyPage })))
 
 // Loading fallback
 function PageLoader() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
