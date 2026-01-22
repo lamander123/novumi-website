@@ -95,11 +95,7 @@ function DutchContent() {
 
       <Section title="5. Cookies en tracking">
         <p>
-          Wij gebruiken Microsoft Clarity voor website-analyse. Clarity verzamelt informatie over hoe bezoekers
-          onze website gebruiken, inclusief sessie-opnames en heatmaps. Deze informatie helpt ons de
-          gebruikerservaring te verbeteren.
-        </p>
-        <p>
+          Wij gebruiken Microsoft Clarity voor website-analyse om de gebruikerservaring te verbeteren.
           Microsoft Clarity plaatst cookies op uw apparaat. Voor meer informatie over hoe Microsoft gegevens
           verwerkt, verwijzen wij naar het{' '}
           <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer" className="text-gray-900 underline">
@@ -240,11 +236,7 @@ function EnglishContent() {
 
       <Section title="5. Cookies and Tracking">
         <p>
-          We use Microsoft Clarity for website analytics. Clarity collects information about how visitors
-          use our website, including session recordings and heatmaps. This information helps us improve
-          the user experience.
-        </p>
-        <p>
+          We use Microsoft Clarity for website analytics to improve user experience.
           Microsoft Clarity places cookies on your device. For more information about how Microsoft processes
           data, please refer to{' '}
           <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer" className="text-gray-900 underline">
