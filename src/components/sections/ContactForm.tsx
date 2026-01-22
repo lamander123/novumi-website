@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react'
 import { Container, Button, Card } from '@/components/ui'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, Phone, MapPin, Loader2 } from 'lucide-react'
 
 interface ContactInfo {
   email: string
@@ -22,11 +22,31 @@ export function ContactForm({ title, subtitle, contactInfo }: ContactFormProps) 
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    // Form submission logic would go here
-    setSubmitted(true)
+    setLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong. Please try again or email us directly.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -197,8 +217,21 @@ export function ContactForm({ title, subtitle, contactInfo }: ContactFormProps) 
                   />
                 </div>
 
-                <Button type="submit" className="w-full">
-                  Send Message
+                {error && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                    {error}
+                  </div>
+                )}
+
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </Button>
               </form>
             )}

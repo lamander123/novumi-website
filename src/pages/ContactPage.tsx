@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react'
-import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, CheckCircle, Loader2 } from 'lucide-react'
 import { PageLayout } from '@/components/layout'
 import { Container, Button, Card } from '@/components/ui'
 import { SEO } from '@/components/SEO'
@@ -8,6 +8,8 @@ import { useI18n } from '@/lib/i18n'
 export function ContactPage() {
   const { t, language } = useI18n()
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,9 +22,32 @@ export function ContactPage() {
     message: '',
   })
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to send message')
+      }
+
+      setSubmitted(true)
+    } catch {
+      setError(
+        language === 'nl'
+          ? 'Er is iets misgegaan. Probeer het opnieuw of mail ons direct.'
+          : 'Something went wrong. Please try again or email us directly.'
+      )
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleInterestToggle = (interest: string) => {
@@ -240,8 +265,21 @@ export function ContactPage() {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full" size="lg">
-                      {t('contact.form.submit')}
+                    {error && (
+                      <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                        {error}
+                      </div>
+                    )}
+
+                    <Button type="submit" className="w-full" size="lg" disabled={loading}>
+                      {loading ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          {language === 'nl' ? 'Verzenden...' : 'Sending...'}
+                        </>
+                      ) : (
+                        t('contact.form.submit')
+                      )}
                     </Button>
                   </form>
                 )}
