@@ -81,6 +81,8 @@ async function sendViaProtonSMTP(email: string, token: string, emailContent: Ema
   const socket = connect({
     hostname: 'smtp.protonmail.ch',
     port: 587,
+  }, {
+    secureTransport: 'starttls',
   })
 
   const writer = socket.writable.getWriter()
