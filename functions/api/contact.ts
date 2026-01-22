@@ -85,10 +85,11 @@ async function sendViaProtonSMTP(email: string, token: string, emailContent: Ema
     secureTransport: 'starttls',
   })
 
-  const writer = socket.writable.getWriter()
-  const reader = socket.readable.getReader()
   const decoder = new TextDecoder()
   const encoder = new TextEncoder()
+
+  let writer = socket.writable.getWriter()
+  let reader = socket.readable.getReader()
 
   async function readResponse(): Promise<string> {
     const { value } = await reader.read()
@@ -110,8 +111,16 @@ async function sendViaProtonSMTP(email: string, token: string, emailContent: Ema
     // STARTTLS
     await sendCommand('STARTTLS')
 
+    // Release old reader/writer before TLS upgrade
+    writer.releaseLock()
+    reader.releaseLock()
+
     // Upgrade to TLS
     await socket.startTls()
+
+    // Get new reader/writer after TLS upgrade
+    writer = socket.writable.getWriter()
+    reader = socket.readable.getReader()
 
     // EHLO again after TLS
     await sendCommand(`EHLO novumi.nl`)
@@ -152,8 +161,12 @@ async function sendViaProtonSMTP(email: string, token: string, emailContent: Ema
     // QUIT
     await sendCommand('QUIT')
   } finally {
-    writer.releaseLock()
-    reader.releaseLock()
+    try {
+      writer.releaseLock()
+      reader.releaseLock()
+    } catch {
+      // Already released
+    }
     await socket.close()
   }
 }
