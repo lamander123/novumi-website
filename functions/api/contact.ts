@@ -1,3 +1,5 @@
+import { connect } from 'cloudflare:sockets'
+
 interface Env {
   PROTON_EMAIL: string      // Your Proton email (e.g., info@novumi.nl)
   PROTON_SMTP_TOKEN: string // SMTP token from Proton settings
@@ -35,6 +37,15 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       )
     }
 
+    // Check environment variables
+    if (!env.PROTON_EMAIL || !env.PROTON_SMTP_TOKEN) {
+      console.error('Missing environment variables')
+      return new Response(
+        JSON.stringify({ error: 'Server configuration error' }),
+        { status: 500, headers }
+      )
+    }
+
     // Build email
     const emailContent = buildEmail(data, env.PROTON_EMAIL)
 
@@ -46,9 +57,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       { status: 200, headers }
     )
   } catch (error) {
-    console.error('Contact form error:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Contact form error:', errorMessage, error)
     return new Response(
-      JSON.stringify({ error: 'Failed to send message' }),
+      JSON.stringify({ error: 'Failed to send message', details: errorMessage }),
       { status: 500, headers }
     )
   }
