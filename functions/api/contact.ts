@@ -1,6 +1,6 @@
 interface Env {
-  RESEND_API_KEY: string
-  CONTACT_EMAIL: string
+  PROTON_EMAIL: string      // Your Proton email (e.g., info@novumi.nl)
+  PROTON_SMTP_TOKEN: string // SMTP token from Proton settings
 }
 
 interface ContactFormData {
@@ -18,7 +18,6 @@ interface ContactFormData {
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context
 
-  // CORS headers
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -29,7 +28,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   try {
     const data: ContactFormData = await request.json()
 
-    // Validate required fields
     if (!data.name || !data.email) {
       return new Response(
         JSON.stringify({ error: 'Name and email are required' }),
@@ -37,35 +35,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       )
     }
 
-    // Build email content
-    const emailHtml = buildEmailHtml(data)
-    const emailText = buildEmailText(data)
+    // Build email
+    const emailContent = buildEmail(data, env.PROTON_EMAIL)
 
-    // Send email via Resend
-    const resendResponse = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: 'Novumi Website <noreply@novumi.nl>',
-        to: env.CONTACT_EMAIL || 'info@novumi.nl',
-        reply_to: data.email,
-        subject: `New Contact Form Submission from ${data.name}`,
-        html: emailHtml,
-        text: emailText,
-      }),
-    })
-
-    if (!resendResponse.ok) {
-      const errorData = await resendResponse.text()
-      console.error('Resend API error:', errorData)
-      return new Response(
-        JSON.stringify({ error: 'Failed to send email' }),
-        { status: 500, headers }
-      )
-    }
+    // Send via Proton SMTP
+    await sendViaProtonSMTP(env.PROTON_EMAIL, env.PROTON_SMTP_TOKEN, emailContent)
 
     return new Response(
       JSON.stringify({ success: true, message: 'Email sent successfully' }),
@@ -74,7 +48,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   } catch (error) {
     console.error('Contact form error:', error)
     return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
+      JSON.stringify({ error: 'Failed to send message' }),
       { status: 500, headers }
     )
   }
@@ -91,59 +65,95 @@ export const onRequestOptions: PagesFunction = async () => {
   })
 }
 
-function buildEmailHtml(data: ContactFormData): string {
-  const fields = [
-    { label: 'Name', value: data.name },
-    { label: 'Email', value: data.email },
-    { label: 'Phone', value: data.phone },
-    { label: 'Company', value: data.company },
-    { label: 'Job Title', value: data.jobTitle },
-    { label: 'Company Size', value: data.companySize },
-    { label: 'Screenings per Year', value: data.screeningsPerYear },
-    { label: 'Interests', value: data.interests?.join(', ') },
-    { label: 'Message', value: data.message },
-  ].filter(f => f.value)
+async function sendViaProtonSMTP(email: string, token: string, emailContent: EmailContent): Promise<void> {
+  const socket = connect({
+    hostname: 'smtp.protonmail.ch',
+    port: 587,
+  })
 
-  const rows = fields
-    .map(f => `
-      <tr>
-        <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; font-weight: 600; color: #374151; width: 180px;">${f.label}</td>
-        <td style="padding: 12px; border-bottom: 1px solid #e5e7eb; color: #111827;">${f.value}</td>
-      </tr>
-    `)
-    .join('')
+  const writer = socket.writable.getWriter()
+  const reader = socket.readable.getReader()
+  const decoder = new TextDecoder()
+  const encoder = new TextEncoder()
 
-  return `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 20px; background-color: #f9fafb;">
-      <div style="max-width: 600px; margin: 0 auto; background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-        <div style="background-color: #111827; padding: 24px; text-align: center;">
-          <h1 style="color: white; margin: 0; font-size: 20px; font-weight: 600;">New Contact Form Submission</h1>
-        </div>
-        <div style="padding: 24px;">
-          <table style="width: 100%; border-collapse: collapse;">
-            ${rows}
-          </table>
-        </div>
-        <div style="padding: 16px 24px; background-color: #f9fafb; text-align: center;">
-          <p style="margin: 0; font-size: 14px; color: #6b7280;">
-            Reply directly to this email to respond to ${data.name}
-          </p>
-        </div>
-      </div>
-    </body>
-    </html>
-  `
+  async function readResponse(): Promise<string> {
+    const { value } = await reader.read()
+    return decoder.decode(value)
+  }
+
+  async function sendCommand(cmd: string): Promise<string> {
+    await writer.write(encoder.encode(cmd + '\r\n'))
+    return readResponse()
+  }
+
+  try {
+    // Read greeting
+    await readResponse()
+
+    // EHLO
+    await sendCommand(`EHLO novumi.nl`)
+
+    // STARTTLS
+    await sendCommand('STARTTLS')
+
+    // Upgrade to TLS
+    await socket.startTls()
+
+    // EHLO again after TLS
+    await sendCommand(`EHLO novumi.nl`)
+
+    // AUTH LOGIN
+    await sendCommand('AUTH LOGIN')
+    await sendCommand(btoa(email))
+    const authResponse = await sendCommand(btoa(token))
+
+    if (!authResponse.startsWith('235')) {
+      throw new Error('SMTP authentication failed')
+    }
+
+    // MAIL FROM
+    await sendCommand(`MAIL FROM:<${email}>`)
+
+    // RCPT TO
+    await sendCommand(`RCPT TO:<${email}>`)
+
+    // DATA
+    await sendCommand('DATA')
+
+    // Send email content
+    const message = [
+      `From: Novumi Website <${email}>`,
+      `To: ${email}`,
+      `Reply-To: ${emailContent.replyTo}`,
+      `Subject: ${emailContent.subject}`,
+      `MIME-Version: 1.0`,
+      `Content-Type: text/plain; charset=utf-8`,
+      ``,
+      emailContent.body,
+      `.`,
+    ].join('\r\n')
+
+    await sendCommand(message)
+
+    // QUIT
+    await sendCommand('QUIT')
+  } finally {
+    writer.releaseLock()
+    reader.releaseLock()
+    await socket.close()
+  }
 }
 
-function buildEmailText(data: ContactFormData): string {
+interface EmailContent {
+  subject: string
+  body: string
+  replyTo: string
+}
+
+function buildEmail(data: ContactFormData, toEmail: string): EmailContent {
   const lines = [
     `NEW CONTACT FORM SUBMISSION`,
+    `================================`,
     ``,
     `Name: ${data.name}`,
     `Email: ${data.email}`,
@@ -158,8 +168,17 @@ function buildEmailText(data: ContactFormData): string {
   if (data.message) {
     lines.push(``)
     lines.push(`Message:`)
+    lines.push(`--------`)
     lines.push(data.message)
   }
 
-  return lines.join('\n')
+  lines.push(``)
+  lines.push(`================================`)
+  lines.push(`Reply directly to respond to ${data.name}`)
+
+  return {
+    subject: `New Contact Form Submission from ${data.name}`,
+    body: lines.join('\n'),
+    replyTo: data.email,
+  }
 }

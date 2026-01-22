@@ -1,6 +1,5 @@
-# Local development environment variables for Cloudflare Pages Functions
-# Copy this file to .dev.vars and fill in your values
-# This file should NOT be committed to git
+# Local development environment variables
+# Copy to .dev.vars and fill in your values
 
-RESEND_API_KEY=re_xxxxxxxxxxxx
-CONTACT_EMAIL=info@novumi.nl
+PROTON_EMAIL=info@novumi.nl
+PROTON_SMTP_TOKEN=your-smtp-token-here
