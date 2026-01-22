@@ -25,12 +25,19 @@ export function HomePage() {
     { q: 'faq.q5', a: 'faq.a5' },
   ]
 
+  // FAQ items for schema markup
+  const faqSchemaItems = faqs.map(faq => ({
+    question: t(faq.q),
+    answer: t(faq.a),
+  }))
+
   return (
     <PageLayout>
       <SEO
         title={language === 'nl' ? 'Pre-employment Screening' : 'Pre-employment Screening'}
         description={t('hero.subtitle')}
         canonical="/"
+        faqItems={faqSchemaItems}
       />
 
       {/* Hero Section */}

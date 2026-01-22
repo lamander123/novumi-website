@@ -39,28 +39,28 @@ function DutchContent() {
     <>
       <Section title="1. Inleiding">
         <p>
-          Novumi ("wij", "ons", "onze") respecteert uw privacy en is toegewijd aan het beschermen van uw persoonsgegevens.
-          Dit privacybeleid informeert u over hoe wij omgaan met uw persoonsgegevens wanneer u onze website bezoekt en
-          informeert u over uw privacyrechten en hoe de wet u beschermt.
+          Novumi ("wij", "ons", "onze") respecteert je privacy en beschermt je persoonsgegevens zorgvuldig.
+          Dit privacybeleid legt uit hoe we omgaan met je gegevens als je onze website bezoekt,
+          en wat je rechten zijn.
         </p>
       </Section>
 
       <Section title="2. Verwerkingsverantwoordelijke">
         <p>
-          Novumi is de verwerkingsverantwoordelijke voor de persoonsgegevens die via deze website worden verzameld.
+          Novumi is verantwoordelijk voor de persoonsgegevens die via deze website worden verzameld.
         </p>
         <ul>
           <li>Bedrijfsnaam: Novumi</li>
-          <li>Vestigingsplaats: Amsterdam, Nederland</li>
+          <li>Vestiging: Amsterdam, Nederland</li>
           <li>E-mail: info@novumi.nl</li>
         </ul>
       </Section>
 
-      <Section title="3. Welke gegevens verzamelen wij">
-        <p>Wij verzamelen en verwerken de volgende categorieën persoonsgegevens:</p>
+      <Section title="3. Welke gegevens verzamelen we">
+        <p>We verzamelen en verwerken de volgende persoonsgegevens:</p>
 
-        <h4 className="font-semibold mt-4">3.1 Gegevens die u ons verstrekt</h4>
-        <p>Wanneer u ons contactformulier invult, verzamelen wij:</p>
+        <h4 className="font-semibold mt-4">3.1 Gegevens die je ons geeft</h4>
+        <p>Als je ons contactformulier invult, verzamelen we:</p>
         <ul>
           <li>Naam</li>
           <li>E-mailadres</li>
@@ -68,50 +68,50 @@ function DutchContent() {
           <li>Bedrijfsnaam en functie</li>
           <li>Bedrijfsgrootte</li>
           <li>Verwachte screenings per jaar</li>
-          <li>Interesses in diensten</li>
-          <li>Uw bericht</li>
+          <li>Interesse in diensten</li>
+          <li>Je bericht</li>
         </ul>
 
         <h4 className="font-semibold mt-4">3.2 Automatisch verzamelde gegevens</h4>
-        <p>Wanneer u onze website bezoekt, verzamelen wij automatisch:</p>
+        <p>Als je onze website bezoekt, verzamelen we automatisch:</p>
         <ul>
           <li>IP-adres (geanonimiseerd)</li>
           <li>Browsertype en -versie</li>
           <li>Apparaatinformatie</li>
-          <li>Pagina's die u bezoekt</li>
-          <li>Tijd en duur van uw bezoek</li>
-          <li>Klikgedrag en scrollgedrag</li>
+          <li>Pagina's die je bezoekt</li>
+          <li>Tijd en duur van je bezoek</li>
+          <li>Klik- en scrollgedrag</li>
         </ul>
       </Section>
 
-      <Section title="4. Doeleinden en rechtsgrond">
-        <p>Wij verwerken uw persoonsgegevens voor de volgende doeleinden:</p>
+      <Section title="4. Waarom we je gegevens verwerken">
+        <p>We verwerken je persoonsgegevens voor:</p>
         <ul>
-          <li><strong>Contactverzoeken afhandelen:</strong> Om te reageren op uw vragen en verzoeken (rechtsgrond: uitvoering van een overeenkomst of precontractuele maatregelen)</li>
-          <li><strong>Website verbeteren:</strong> Om onze website en gebruikerservaring te analyseren en verbeteren (rechtsgrond: gerechtvaardigd belang)</li>
-          <li><strong>Beveiliging:</strong> Om de veiligheid van onze website te waarborgen (rechtsgrond: gerechtvaardigd belang)</li>
+          <li><strong>Contact afhandelen:</strong> Om te reageren op je vragen en verzoeken (rechtsgrond: uitvoering van een overeenkomst)</li>
+          <li><strong>Website verbeteren:</strong> Om onze website en gebruikerservaring te verbeteren (rechtsgrond: gerechtvaardigd belang)</li>
+          <li><strong>Beveiliging:</strong> Om onze website veilig te houden (rechtsgrond: gerechtvaardigd belang)</li>
         </ul>
       </Section>
 
       <Section title="5. Cookies en tracking">
         <p>
-          Wij gebruiken Microsoft Clarity voor website-analyse om de gebruikerservaring te verbeteren.
-          Microsoft Clarity plaatst cookies op uw apparaat. Voor meer informatie over hoe Microsoft gegevens
-          verwerkt, verwijzen wij naar het{' '}
+          We gebruiken Microsoft Clarity voor website-analyse om de gebruikerservaring te verbeteren.
+          Microsoft Clarity plaatst cookies op je apparaat. Meer informatie over hoe Microsoft gegevens
+          verwerkt vind je in het{' '}
           <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer" className="text-gray-900 underline">
             privacybeleid van Microsoft
           </a>.
         </p>
       </Section>
 
-      <Section title="6. Delen van gegevens">
-        <p>Wij delen uw persoonsgegevens met de volgende partijen:</p>
+      <Section title="6. Met wie delen we gegevens">
+        <p>We delen je persoonsgegevens met:</p>
         <ul>
           <li><strong>Microsoft Clarity:</strong> Voor website-analyse (verwerker in de VS, EU-VS Data Privacy Framework)</li>
           <li><strong>Hosting provider:</strong> Cloudflare (voor het hosten van onze website)</li>
         </ul>
         <p>
-          Wij verkopen uw persoonsgegevens niet aan derden.
+          We verkopen je gegevens nooit aan derden.
         </p>
       </Section>
 
@@ -122,33 +122,32 @@ function DutchContent() {
         </ul>
       </Section>
 
-      <Section title="8. Uw rechten">
-        <p>Onder de AVG heeft u de volgende rechten:</p>
+      <Section title="8. Je rechten">
+        <p>Onder de AVG heb je de volgende rechten:</p>
         <ul>
-          <li><strong>Recht op inzage:</strong> U kunt opvragen welke gegevens wij van u hebben</li>
-          <li><strong>Recht op rectificatie:</strong> U kunt onjuiste gegevens laten corrigeren</li>
-          <li><strong>Recht op verwijdering:</strong> U kunt verzoeken uw gegevens te verwijderen</li>
-          <li><strong>Recht op beperking:</strong> U kunt de verwerking laten beperken</li>
-          <li><strong>Recht op overdraagbaarheid:</strong> U kunt uw gegevens opvragen in een standaardformaat</li>
-          <li><strong>Recht van bezwaar:</strong> U kunt bezwaar maken tegen verwerking op basis van gerechtvaardigd belang</li>
+          <li><strong>Inzage:</strong> Je kunt opvragen welke gegevens we van je hebben</li>
+          <li><strong>Correctie:</strong> Je kunt onjuiste gegevens laten aanpassen</li>
+          <li><strong>Verwijdering:</strong> Je kunt vragen om je gegevens te verwijderen</li>
+          <li><strong>Beperking:</strong> Je kunt de verwerking laten beperken</li>
+          <li><strong>Overdraagbaarheid:</strong> Je kunt je gegevens opvragen in een standaardformaat</li>
+          <li><strong>Bezwaar:</strong> Je kunt bezwaar maken tegen verwerking</li>
         </ul>
         <p>
-          Om uw rechten uit te oefenen, kunt u contact met ons opnemen via info@novumi.nl.
+          Wil je gebruik maken van je rechten? Neem contact met ons op via info@novumi.nl.
         </p>
       </Section>
 
       <Section title="9. Beveiliging">
         <p>
-          Wij nemen passende technische en organisatorische maatregelen om uw persoonsgegevens te beschermen
-          tegen ongeoorloofde toegang, verlies of misbruik. Dit omvat het gebruik van versleutelde verbindingen
-          (HTTPS) en beveiligde opslag.
+          We nemen passende maatregelen om je persoonsgegevens te beschermen tegen onbevoegde toegang,
+          verlies of misbruik. Dit betekent onder andere versleutelde verbindingen (HTTPS) en beveiligde opslag.
         </p>
       </Section>
 
       <Section title="10. Klachten">
         <p>
-          Als u een klacht heeft over hoe wij uw persoonsgegevens verwerken, kunt u contact met ons opnemen.
-          U heeft ook het recht om een klacht in te dienen bij de Autoriteit Persoonsgegevens:{' '}
+          Heb je een klacht over hoe we met je gegevens omgaan? Neem dan contact met ons op.
+          Je kunt ook een klacht indienen bij de Autoriteit Persoonsgegevens:{' '}
           <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener noreferrer" className="text-gray-900 underline">
             autoriteitpersoonsgegevens.nl
           </a>
@@ -157,14 +156,14 @@ function DutchContent() {
 
       <Section title="11. Wijzigingen">
         <p>
-          Wij kunnen dit privacybeleid van tijd tot tijd bijwerken. De meest recente versie is altijd
-          beschikbaar op deze pagina. Bij belangrijke wijzigingen zullen wij u hierover informeren.
+          We kunnen dit privacybeleid soms bijwerken. De nieuwste versie staat altijd op deze pagina.
+          Bij grote wijzigingen laten we het je weten.
         </p>
       </Section>
 
       <Section title="12. Contact">
         <p>
-          Voor vragen over dit privacybeleid of uw persoonsgegevens kunt u contact met ons opnemen:
+          Vragen over dit privacybeleid of je persoonsgegevens? Neem contact met ons op:
         </p>
         <ul>
           <li>E-mail: info@novumi.nl</li>
